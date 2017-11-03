@@ -16,13 +16,12 @@ const phrase = [
 ////////    Variables   /////////////////////
 ////////////////////////////////////////////
 
-let missed = 0;
-
 //user stored input
 let userInt;
 
 // Store current word
 let currentLetters = getRandomPhraseAsArrayy(phrase)[0];
+let missed = 0;
 let lostHeart = 5;
 let correct = [];
 let incorrect = [];
