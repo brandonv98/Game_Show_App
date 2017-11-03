@@ -3,11 +3,13 @@
 ////////////////////////////////////
 
 const phrase = [
-  ['b', 'r', 'a', 'n', 'd', 'o', 'n'],
-  ['j', 'a', 'c', 'k'],
-  ['e', 'n', 'j', 'o', 'i'],
-  ['i', 'n', 'v', 'o', 'k', 'e'],
-  ['a', 'g', 'a', 'i', 'n'],
+  ['jack was so quick'],
+  ['we only have one chance'],
+  ['go for it'],
+  ['invoked the man to blow'],
+  ['html css and javascript'],
+  ['the quick brown fox'],
+  ['new york city'],
 ];
 
 //////////////////////////////////////////////
@@ -20,7 +22,7 @@ let missed = 0;
 let userInt;
 
 // Store current word
-let currentLetters = getRandomPhraseAsArrayy(phrase);
+let currentLetters = getRandomPhraseAsArrayy(phrase)[0];
 let lostHeart = 5;
 let correct = [];
 let incorrect = [];
@@ -49,8 +51,14 @@ function addPhraseToDisplay(phrases) {
   const newUl = document.getElementById('phrase');
   const UlLastOf = newUl.lastChild;
   const newLi = document.createElement('li');
-  newLi.setAttribute('class', 'letter');
-  newLi.innerHTML += phrases;
+  if (phrases === ' ') {
+    newLi.setAttribute('class', 'space letter');
+    correct.push(' ');
+  } else {
+    newLi.setAttribute('class', 'letter');
+    newLi.innerHTML += phrases;
+  }
+
   UlLastOf.append(newLi);
 }
 
@@ -73,6 +81,13 @@ function loopThrewArray(letter) {
   }
 
 }
+
+// function spaceCheck(space) {
+//   const showLetter = document.querySelectorAll('.letter');
+//       const space = showLetter;
+//       space[i].classList.add('space');
+//       space[i].classList.remove('letter');
+// }
 
 // function removes one heart each time missed++
 function removeHeart(lostHeart) {
@@ -124,7 +139,7 @@ function checkScore(score) {
 // If the game is over show the game over screen
 function gameOverScreen(screen) {
   overlay.style.display = 'flex';
-  const oneWord = currentLetters.join('');
+  const oneWord = currentLetters;
   const gameOverOverlay = overlay.children;
   const a = gameOverOverlay[1].innerHTML = 'Replay &#9735;';
   const h1 = gameOverOverlay[0].innerHTML =
@@ -134,7 +149,7 @@ function gameOverScreen(screen) {
 // If the game is won show the game over screen
 function gameWonScreen(screen) {
   overlay.style.display = 'flex';
-  const oneWord = currentLetters.join('');
+  const oneWord = currentLetters;
   const gameOverOverlay = overlay.children;
   const a = gameOverOverlay[1].innerHTML = 'Continue &#9735;';
   const h1 = gameOverOverlay[0].innerHTML =

@@ -111,10 +111,12 @@ button {
   color: transparent;
   background: var(--color-neutral-light);
   border-radius: 5px;
+  margin-top: 8px;
 }
 
 .space {
   width: 15px;
+  visibility: hidden;
 }
 
 .show {
