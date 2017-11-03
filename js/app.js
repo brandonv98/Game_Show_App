@@ -2,15 +2,14 @@
 ///   [ Hip, Hip, ARRAYS!!! ]    ///
 ////////////////////////////////////
 
-const phrase = [
-  ['jack was so quick'],
-  ['we only have one chance'],
-  ['go for it'],
-  ['invoked the man to blow'],
-  ['html css and javascript'],
-  ['the quick brown fox'],
-  ['new york city'],
-];
+const phrase = ['jack was so quick',
+                'we only have one chance',
+                'go for it',
+                'invoked the man to blow',
+                'the quick brown fox',
+                'new york city',
+                'try and win this time',
+              ];
 
 //////////////////////////////////////////////
 ////////    Variables   /////////////////////
@@ -20,7 +19,7 @@ const phrase = [
 let userInt;
 
 // Store current word
-let currentLetters = getRandomPhraseAsArrayy(phrase)[0];
+let currentLetters = getRandomPhraseAsArrayy(phrase);
 let missed = 0;
 let lostHeart = 5;
 let correct = [];
@@ -73,7 +72,7 @@ function addNewUlToDisplay(Ul) {
 function loopThrewArray(letter) {
   //add ul to screen
   addNewUlToDisplay();
-  letter = currentLetters;
+  letter[i] = currentLetters;
   for (var i = 0; i < letter.length; i++) {
     //for all the letters in the array add them in there own <li> elements
     addPhraseToDisplay(letter[i]);
@@ -175,7 +174,7 @@ keyboardRows.addEventListener('click', (btn) => {
 overlay.addEventListener('click', (e) => {
   if (e.target.textContent === 'Start Game') {
     overlay.style.display = 'none';
-    loopThrewArray(phrase);
+    loopThrewArray(currentLetters);
   } else if (e.target.textContent !== 'Start Game') {
     //restart the game fresh.
     window.location.reload(true);
