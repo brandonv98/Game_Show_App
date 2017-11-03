@@ -3,11 +3,11 @@
 ////////////////////////////////////
 
 const phrase = [
-    ['b', 'r', 'a', 'n', 'd', 'o', 'n'],
-    ['j', 'a', 'c', 'k'],
-    ['e', 'n', 'j', 'o', 'i'],
-    ['i', 'n', 'v', 'o', 'k', 'e'],
-    ['a', 'g', 'a', 'i', 'n']
+  ['b', 'r', 'a', 'n', 'd', 'o', 'n'],
+  ['j', 'a', 'c', 'k'],
+  ['e', 'n', 'j', 'o', 'i'],
+  ['i', 'n', 'v', 'o', 'k', 'e'],
+  ['a', 'g', 'a', 'i', 'n']
 ];
 
 //////////////////////////////////////////////
@@ -36,24 +36,24 @@ const keyboardRows = document.getElementById('qwerty');
 ///////// FUNCTIONS ////////////////
 ///////////////////////////////////
 
-function getRandomPhraseAsArrayy( arr ) {
-        let phrases = phrase [ Math.floor (Math.random() * phrase.length ) ];
-        console.log(phrases + ' is the log');
-        return phrases;
+function getRandomPhraseAsArrayy(arr) {
+  let phrases = phrase[Math.floor(Math.random() * phrase.length)];
+  console.log(phrases + ' is the log');
+  return phrases;
 }
 
 //append the getRandomPhraseAsArrayy(); letters generated to <li> element
-function addPhraseToDisplay( phrases ){
-    const newUl = document.getElementById('phrase');
-    const UlLastOf = newUl.lastChild;
-    const newLi = document.createElement('li');
-    newLi.setAttribute('class', 'letter');
-    newLi.innerHTML += phrases;
-    UlLastOf.append(newLi);
+function addPhraseToDisplay(phrases) {
+  const newUl = document.getElementById('phrase');
+  const UlLastOf = newUl.lastChild;
+  const newLi = document.createElement('li');
+  newLi.setAttribute('class', 'letter');
+  newLi.innerHTML += phrases;
+  UlLastOf.append(newLi);
 }
 
 // Create a new ul for the li children
-function addNewUlToDisplay( Ul ) {
+function addNewUlToDisplay(Ul) {
   const addPhrase = document.getElementById('phrase');
   const newUl = document.createElement('ul');
   newUl.setAttribute('style', 'width:100%;')
@@ -61,7 +61,7 @@ function addNewUlToDisplay( Ul ) {
 }
 
 //Add word to screen on load. AKA Build
-function loopThrewArray( letter ) {
+function loopThrewArray(letter) {
   //add ul to screen
   addNewUlToDisplay();
   letter = currentLetters;
@@ -86,29 +86,29 @@ function revealUserLetter(num) {
 }
 
 //Check to see if user selected letter matches any letters in the current word.
-function checkLetter( arr ) {
+function checkLetter(arr) {
   let letterSelect;
   for (var i = 0; i < arr.length; i++) {
     currentL = arr;
 
     if (userInt === currentL[i]) {
-            revealUserLetter(i);
-            correctAnswer ++;
-            correct.push(currentL[i]);
-            letterSelect = userInt;
-            console.log(letterSelect);
-          }
+      revealUserLetter(i);
+      correctAnswer++;
+      correct.push(currentL[i]);
+      letterSelect = userInt;
+      console.log(letterSelect);
+    }
   }
   if (letterSelect) {
-      console.log('Your Right!');
-      return letterSelect;
+    console.log('Your Right!');
+    return letterSelect;
   } else {
     return null;
   }
 }
 
 //Checks if the game is won, over, or still playing.
-function checkScore(score){
+function checkScore(score) {
   if (currentLetters.length === correct.length) {
     gameWonScreen();
     console.log('YOU WIN!!');
@@ -124,7 +124,7 @@ function gameOverScreen(screen) {
   const oneWord = currentLetters.join('');
   const gameOverOverlay = overlay.children;
   const a = gameOverOverlay[1].innerHTML = 'Replay &#9735;';
-  const h1 = gameOverOverlay[0].innerHTML = 'The Word Was '+ '<br>" ' + oneWord + ' "<br>' + ' Better Luck Next Time';
+  const h1 = gameOverOverlay[0].innerHTML = 'The Word Was ' + '<br>" ' + oneWord + ' "<br>' + ' Better Luck Next Time';
 }
 
 // If the game is won show the game over screen
@@ -133,7 +133,7 @@ function gameWonScreen(screen) {
   const oneWord = currentLetters.join('');
   const gameOverOverlay = overlay.children;
   const a = gameOverOverlay[1].innerHTML = 'Continue &#9735;';
-  const h1 = gameOverOverlay[0].innerHTML = 'The Word Was '+ '<br>" ' + oneWord + ' "<br>' + ' Good Job!!';
+  const h1 = gameOverOverlay[0].innerHTML = 'The Word Was ' + '<br>" ' + oneWord + ' "<br>' + ' Good Job!!';
 }
 
 
@@ -143,21 +143,21 @@ function gameWonScreen(screen) {
 
 // Keybord event listener
 keyboardRows.addEventListener('click', (btn) => {
-      userInt = btn.target.textContent;
-      if (btn.target.tagName === 'BUTTON') {
-        const userInt = btn.target;
-        userInt.classList.add('chosen');
-        userInt.disabled = true;
-        const letterFound = checkLetter(currentLetters);
-        if (letterFound === null) {
-          missed++;
-          console.log('You missed ' + missed + ' out of 5 tries');
-          lostHeart--;
-          removeHeart(lostHeart);
-        }
-        checkScore();
-      }
-  });
+  userInt = btn.target.textContent;
+  if (btn.target.tagName === 'BUTTON') {
+    const userInt = btn.target;
+    userInt.classList.add('chosen');
+    userInt.disabled = true;
+    const letterFound = checkLetter(currentLetters);
+    if (letterFound === null) {
+      missed++;
+      console.log('You missed ' + missed + ' out of 5 tries');
+      lostHeart--;
+      removeHeart(lostHeart);
+    }
+    checkScore();
+  }
+});
 
 // Hide overlay to play the game when the start button is invoked
 overlay.addEventListener('click', (e) => {
@@ -167,8 +167,7 @@ overlay.addEventListener('click', (e) => {
   } else if (e.target.textContent !== 'Start Game') {
     //restart the game fresh.
     window.location.reload(true);
-  }
-  else {
+  } else {
     console.log('Something went wrong with the overlay event listener');
   }
 });
