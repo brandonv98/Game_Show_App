@@ -82,13 +82,6 @@ function loopThrewArray(letter) {
 
 }
 
-// function spaceCheck(space) {
-//   const showLetter = document.querySelectorAll('.letter');
-//       const space = showLetter;
-//       space[i].classList.add('space');
-//       space[i].classList.remove('letter');
-// }
-
 // function removes one heart each time missed++
 function removeHeart(lostHeart) {
   scoreboardList[lostHeart].classList.remove('tries');
