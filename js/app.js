@@ -7,7 +7,7 @@ const phrase = [
   ['j', 'a', 'c', 'k'],
   ['e', 'n', 'j', 'o', 'i'],
   ['i', 'n', 'v', 'o', 'k', 'e'],
-  ['a', 'g', 'a', 'i', 'n']
+  ['a', 'g', 'a', 'i', 'n'],
 ];
 
 //////////////////////////////////////////////
@@ -15,8 +15,10 @@ const phrase = [
 ////////////////////////////////////////////
 
 let missed = 0;
+
 //user stored input
 let userInt;
+
 // Store current word
 let currentLetters = getRandomPhraseAsArrayy(phrase);
 let lostHeart = 5;
@@ -56,7 +58,7 @@ function addPhraseToDisplay(phrases) {
 function addNewUlToDisplay(Ul) {
   const addPhrase = document.getElementById('phrase');
   const newUl = document.createElement('ul');
-  newUl.setAttribute('style', 'width:100%;')
+  newUl.setAttribute('style', 'width:100%;');
   addPhrase.append(newUl);
 }
 
@@ -99,6 +101,7 @@ function checkLetter(arr) {
       console.log(letterSelect);
     }
   }
+
   if (letterSelect) {
     console.log('Your Right!');
     return letterSelect;
@@ -124,7 +127,8 @@ function gameOverScreen(screen) {
   const oneWord = currentLetters.join('');
   const gameOverOverlay = overlay.children;
   const a = gameOverOverlay[1].innerHTML = 'Replay &#9735;';
-  const h1 = gameOverOverlay[0].innerHTML = 'The Word Was ' + '<br>" ' + oneWord + ' "<br>' + ' Better Luck Next Time';
+  const h1 = gameOverOverlay[0].innerHTML =
+    'The Word Was ' + '<br>" ' + oneWord + ' "<br>' + ' Better Luck Next Time';
 }
 
 // If the game is won show the game over screen
@@ -133,9 +137,9 @@ function gameWonScreen(screen) {
   const oneWord = currentLetters.join('');
   const gameOverOverlay = overlay.children;
   const a = gameOverOverlay[1].innerHTML = 'Continue &#9735;';
-  const h1 = gameOverOverlay[0].innerHTML = 'The Word Was ' + '<br>" ' + oneWord + ' "<br>' + ' Good Job!!';
+  const h1 = gameOverOverlay[0].innerHTML =
+    'The Word Was ' + '<br>" ' + oneWord + ' "<br>' + ' Good Job!!';
 }
-
 
 ///////////////////////////////////////////////////
 ////////////// EVENTS ////////////////////////////
@@ -155,6 +159,7 @@ keyboardRows.addEventListener('click', (btn) => {
       lostHeart--;
       removeHeart(lostHeart);
     }
+
     checkScore();
   }
 });
