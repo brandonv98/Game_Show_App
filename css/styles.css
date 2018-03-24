@@ -43,7 +43,7 @@ h2 {
 }
 
 button {
-  margin: 3px;
+  margin: 2px;
   border: 1px solid transparent;
   color: var(--color-keys);
   font-size: var(--font-size-medium);
@@ -63,6 +63,7 @@ button {
   text-align: center;
   width: 100%;
   max-width: 100%;
+  margin: auto;
 }
 
 .section {
@@ -204,7 +205,7 @@ button {
   color: var(--color-lose);
 }
 
-@media (min-width: 550px) {
+@media (min-width: 450px) {
   button {
     margin: 6px;
     border: 1px solid transparent;
