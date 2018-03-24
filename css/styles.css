@@ -1,6 +1,6 @@
 /* Main styles */
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&Roboto:300');
 
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&Roboto:300');
 /* Variables */
 
 :root {
@@ -43,9 +43,8 @@ h2 {
 }
 
 button {
-  margin: 6px;
+  margin: 3px;
   border: 1px solid transparent;
-  padding: .5rem 1rem;
   color: var(--color-keys);
   font-size: var(--font-size-medium);
   background-color: var(--color-keys-light);
@@ -76,11 +75,22 @@ button {
 }
 
 /* Scoreboard */
+
 @keyframes fade-out {
-  0%  {transition: scale(.9); opacity: 1;}
-  55%  {transform: scale(1.3)}
-  75%  {transform: scale(.4);}
-  100% {transform: scale(.1); opacity: .5;}
+  0% {
+    transition: scale(.9);
+    opacity: 1;
+  }
+  55% {
+    transform: scale(1.3)
+  }
+  75% {
+    transform: scale(.4);
+  }
+  100% {
+    transform: scale(.1);
+    opacity: .5;
+  }
 }
 
 .tries {
@@ -91,6 +101,7 @@ button {
   width: 37px;
   transition: .9s ease-out;
 }
+
 .lost-heart {
   background-image: url('../images/lostHeart.png');
   background-size: 35px 30px;
@@ -189,4 +200,12 @@ button {
 
 .lose a {
   color: var(--color-lose);
+}
+
+@media (min-width: 550px) {
+  button {
+    margin: 6px;
+    border: 1px solid transparent;
+    padding: .5rem 1rem;
+  }
 }
